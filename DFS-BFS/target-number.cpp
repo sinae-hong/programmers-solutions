@@ -16,7 +16,6 @@ int search_dfs(vector<int>& numbers, const int position, const int accumulation,
 }
 
 int solution(vector<int> numbers, int target) {
-    int answer = 0;
     return search_dfs(numbers, 0, 0, target);
 }
 
