@@ -1,4 +1,5 @@
 /* 그래프 > 가장 먼 노드 문제풀이 (#8)
+Dijkstra 알고리즘을 활용한 방식
 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges */
 
 #include <vector>
@@ -42,3 +43,16 @@ int solution(int n, vector<vector<int>> edge) {
     auto max_distance = *max_element(distance.begin() + 1, distance.end());
     return count(distance.begin(), distance.end(), max_distance);
 }
+
+/*
+정확성  테스트
+테스트 1 〉	통과 (0.02ms, 4.15MB)
+테스트 2 〉	통과 (0.02ms, 3.73MB)
+테스트 3 〉	통과 (0.03ms, 4.11MB)
+테스트 4 〉	통과 (0.08ms, 3.6MB)
+테스트 5 〉	통과 (0.44ms, 4.08MB)
+테스트 6 〉	통과 (0.76ms, 4.42MB)
+테스트 7 〉	통과 (6.73ms, 10.6MB)
+테스트 8 〉	통과 (16.91ms, 14MB)
+테스트 9 〉	통과 (10.45ms, 14MB)
+*/
