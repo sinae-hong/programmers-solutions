@@ -8,9 +8,17 @@
 using namespace std;
 
 int solution(int n, vector<vector<int>> edge) {
+    vector<vector<int>> neighbors(n + 1);
+    for (auto& vertex : edge)
+    {
+        neighbors[vertex[0]].push_back(vertex[1]);
+        neighbors[vertex[1]].push_back(vertex[0]);
+    }
+    
     const int INF = 100000;
-    vector<int> distance(n+1, INF);
+    vector<int> distance(n + 1, INF);
     distance[1] = 0;    // itself
+    
     priority_queue<pair<int,int>> stopover;
     stopover.push({0, 1});
     
@@ -20,15 +28,8 @@ int solution(int n, vector<vector<int>> edge) {
         auto current_node = stopover.top().second;
         stopover.pop();
         
-        for (int i = edge.size() - 1; i >= 0; i--)
+        for (auto& new_node : neighbors[current_node])
         {
-            int new_node;
-            if (edge[i][0] == current_node) new_node = edge[i][1];
-            else if (edge[i][1] == current_node) new_node = edge[i][0];
-            else continue;
-            
-            edge.erase(edge.begin() + i);
-            
             auto new_distance = current_distance + 1;
             if (distance[new_node] > new_distance)
             {
